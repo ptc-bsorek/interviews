@@ -1,0 +1,73 @@
+<h1>Gif creator</h1>
+<div class="centered-content">
+
+    <form [formGroup]="gifForm" (ngSubmit)="render()" novalid>
+        <div>
+            <label for="whenToStart">Job delay </label>
+            <input placeholder="delay in seconds" type="number" formControlName="whenToStart">
+            <br>
+            <label for="name">Category </label>
+            <select name="category" formControlName="categoryId" required>
+                <option [value]="c.id" *ngFor="let c of categories">{{c.name}}</option>
+            </select>
+            <div *ngIf="!gifForm.controls.categoryId.valid && touched" class="mandatory-input-alert">
+                category is mandatory
+            </div>
+        </div>
+        <div>
+            <label for="name">Gif images interval</label>
+            <input id="interval" type="number" formControlName="interval" placeholder="interval in seconds">
+        </div>
+        <button type="submit">Generate Gif</button>
+        <button type="button" *ngIf="inProgress" (click)="inProgress = !inProgress">*cancel</button>
+    </form>
+    <br><br>
+    <div *ngFor="let item of list">
+        <img [src]="item.imageUrl" alt="image">
+        <p>{{item.category.name}}</p>
+    </div>
+
+    <div class="images-container">
+        <span *ngFor="let img of gifArray">
+            <img [src]="img" alt="rendered gif">
+            <button (click)="removeGif(img)">X</button>
+        </span>
+    </div>
+    <!-- <button type="button" (click)="removeGif()" >Remove gif</button> -->
+
+</div>
+
+
+<!-- <a class="list-menu-item" *ngFor="let list of lists">{{list.title}}</a>
+    <a class="list-menu-item" *ngFor="let list of lists" [routerLink]="['/lists', list._id]" routerLinkActive="is-active">{{list.title}}</a>
+
+    <div class="task" *ngFor="let task of tasks">
+        <h1>{{task.title}}</h1>
+    </div>
+
+    <div class="task-manager-container">
+        <h3>Start new animated job</h3>
+        <button class="button" routerLink="/new-list">Create new job/list</button>
+        <button class="button" (click)="createNewJob()">Create new job</button>
+        <button class='button is-primary'>Save</button>
+
+        <div class="jobs-manger-container">jobs here</div>
+        <div class="categories-list-container">categories here</div>
+        <div class="images-container">images here</div>
+    </div>
+</div>
+
+
+
+<div class="side-bar">
+    <h3>Exsiting jobs</h3>
+    <div class="list-menu">
+        <p>bla1</p>
+        <p>bla2</p>
+        <p>bla3</p>
+    </div>
+</div>
+
+
+
+<div class="details-container">details here</div> -->

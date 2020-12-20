@@ -1,0 +1,16 @@
+<div fxLayoutAlign="center"  class="jobform" >
+  <mat-card fxFlex="25">
+    <mat-toolbar color="primary">Add Job</mat-toolbar>
+    <form class="example-form" fxLayoutAlign="stretch" fxLayout="column" class="addjob-div"
+          [formGroup]="formGroup" (ngSubmit)="addJob()">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="subject" formControlName="subject" >
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input matInput type="number" placeholder="frequency" formControlName="frequency" >
+      </mat-form-field>
+      <button color="primary" mat-raised-button type="submit">submit</button>
+    </form>
+
+  </mat-card>
+</div>
